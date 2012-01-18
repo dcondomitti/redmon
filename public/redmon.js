@@ -26,7 +26,6 @@ var Redmon = (function() {
     memoryWidget.render(data);
     keyspaceWidget.render(data);
     infoWidget.render(data);
-    configWidget.render();
   }
 
   /**
@@ -302,47 +301,6 @@ var Redmon = (function() {
     }
 
     events.bind('data', onData);
-
-    return {
-      render: render
-    }
-  })();
-
-  //////////////////////////////////////////////////////////////////////
-  // encapsulate the config widget
-  var configWidget = (function() {
-    var selects = {
-      'appendonly'                : 'yes,no',
-      'no-appendfsync-on-rewrite' : 'yes,no',
-      'slave-serve-stale-data'    : 'yes,no',
-      'loglevel'                  : 'debug,verbose,notice,warning',
-      'maxmemory-policy'          : 'volatile-lru,allkeys-lru,volatile-random,allkeys-random,volatile-ttl,noeviction',
-      'appendfsync'               : 'always,everysec,no'
-    };
-
-    function render(data) {
-      $('#config-table .editable').each(function() {
-        var editable = $(this),
-                  id = editable.attr('id');
-
-        var config = {
-          url           : '/config',
-          element_id    : 'param',
-          update_value  : 'value',
-          show_buttons  :  true,
-          save_button   : '<button style="margin-left:5px;"class="btn primary">Save</button>',
-          cancel_button : '<button class="btn">Cancel</button>',
-          default_text  : '&nbsp'
-        };
-
-        if (selects[id]) {
-          config.field_type     = 'select';
-          config.select_options = selects[id];
-        }
-
-        editable.editInPlace(config);
-      });
-    }
 
     return {
       render: render

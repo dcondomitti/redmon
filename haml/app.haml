@@ -21,20 +21,10 @@
           %ul.nav
             %li.active{:id => 'dashboard'}
               %a Dashboard
-            %li{:id => 'keys'}
-              %a Keys
-            %li{:id => 'cli'}
-              %a CLI
-            %li{:id => 'config'}
-              %a Configuration
             %li{:id => 'slow'}
               %a Slow Log
           .pull-right
             %a.brand #{redis_url}
-            .btns
-              %button.btn.primary{:id => 'flushBtn'} Flush DB
-              %button.btn.primary{:id => 'resetBtn'} Reset Statistics
-
     .container.viewport
       .dashboard
         .content
@@ -117,38 +107,6 @@
                     %tr
                       %td VM Enabled
                       %td{:id => "vm_enabled"}
-      .keys.hidden
-        .content
-          .page-header
-            %h1 Keys - Coming soon!
-
-      .cli.hidden
-        .content
-          .page-header
-            %h1 Command Line Interface
-          .row
-            .span21{:style => "height:500px"}
-              #wterm.cli.wterm_terminal
-
-      .config.hidden
-        .content
-          .page-header
-            %h1 Configuration
-            .widget
-              .headbar
-                %h2 Parameters
-              %table.condensed-table{:id => "config-table"}
-                %tbody
-                - config.each do |k,v|
-                  %tr
-                    %td{:style => "width: 20%"}= k
-                    %td
-                      .editable{:id => "#{k}"}= v
-
-      .slow.hidden
-        .content
-          .page-header
-            %h1 Slow Log - Coming Soon
 
 :javascript
   $(document).ready(function() {

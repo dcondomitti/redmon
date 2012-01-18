@@ -9,7 +9,8 @@ module Redmon
       :subscribe,
       :unsubscribe,
       :unwatch,
-      :watch
+      :watch,
+      :flushdb
     ]
 
     def unquoted
